@@ -1,6 +1,7 @@
 export const colors = {
   app_main_color: "#1C2E4A",
   app_black: "#333",
+  icon_black: "#191919",
   app_white: "#fff",
   app_light_gray: "#F5F5F5",
   app_gray: "#BCBCBC",

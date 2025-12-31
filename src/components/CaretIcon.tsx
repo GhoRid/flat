@@ -1,3 +1,5 @@
+import CaretSvg from "@svgs/caret.svg?react";
+
 type Dir = "up" | "right" | "down" | "left";
 
 const rot: Record<Dir, number> = { up: 0, right: 90, down: 180, left: 270 };
@@ -10,9 +12,7 @@ const CaretIcon = ({
   className?: string;
 }) => {
   return (
-    <img
-      src="/icons/caret.svg"
-      alt=""
+    <CaretSvg
       className={className}
       style={{ transform: `rotate(${rot[dir]}deg)` }}
     />
