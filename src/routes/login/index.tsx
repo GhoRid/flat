@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import styled from "styled-components";
-import type { FormEvent } from "react";
 import LoginLogoSection from "./-components/LoginLogoSection";
 import LoginForm from "./-components/LoginForm";
 import LoginFooterLinks from "./-components/LoginFooterLinks";
@@ -45,7 +44,7 @@ const PageWrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   background-color: ${colors.white};

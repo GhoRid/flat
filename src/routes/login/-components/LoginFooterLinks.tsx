@@ -13,7 +13,6 @@ export default function LoginFooterLinks() {
 }
 
 const BottomLinks = styled.div`
-  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
