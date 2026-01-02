@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import LoginLogoSection from "./-components/LoginLogoSection";
 import LoginForm from "./-components/LoginForm";
 import LoginFooterLinks from "./-components/LoginFooterLinks";
+import { colors } from "../../colors";
 
 export const Route = createFileRoute("/login/")({
   component: LoginPage,
@@ -32,14 +33,14 @@ const PageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: ${colors.white};
   padding: 24px;
 `;
 
 const Card = styled.div`
   width: 100%;
   max-width: 640px;
-  background-color: #ffffff;
+  background-color: ${colors.white};
   border-radius: 24px;
   padding: 64px 72px 40px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
