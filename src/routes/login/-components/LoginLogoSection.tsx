@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FlatLogo from "../../../assets/svgs/FlatLogo.svg?react";
+import FlatLogo from "@svgs/FlatLogo.svg?react";
 import { colors } from "../../../styles/colors";
 
 export default function LoginLogoSection() {

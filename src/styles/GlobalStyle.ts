@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./colors";
 
 export const GlobalStyle = createGlobalStyle`
   /* === HARD CSS RESET (Meyer + Modern Normalize Custom) === */
@@ -33,8 +34,9 @@ export const GlobalStyle = createGlobalStyle`
   /* Body defaults */
   body {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 400;
     background-color: #fff;
-    color: #111;
+    color: ${colors.app_black};
     line-height: 1.5;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
