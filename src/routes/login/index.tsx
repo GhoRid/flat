@@ -10,10 +10,22 @@ export const Route = createFileRoute("/login/")({
   component: LoginPage,
 });
 
+type LoginPayload = {
+  email: string;
+  password: string;
+  keepLogin: boolean;
+};
+
 function LoginPage() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: 로그인 API 연동
+  const handleSubmit = async (payload: LoginPayload) => {
+    // ✅ 여기서 API 연동 제어
+    // try {
+    //   const res = await loginApi(payload.email, payload.password, payload.keepLogin);
+    //   // TODO: 토큰 저장 / 라우팅 이동 등
+    // } catch (e) {
+    //   // TODO: 에러 처리
+    // }
+    // console.log("submit payload:", payload);
   };
 
   return (
