@@ -16,6 +16,13 @@ import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as LoginLayoutSignUpIndexRouteImport } from './routes/_loginLayout/signUp/index'
 import { Route as LoginLayoutFindPwIndexRouteImport } from './routes/_loginLayout/findPw/index'
 import { Route as LoginLayoutFindIdIndexRouteImport } from './routes/_loginLayout/findId/index'
+import { Route as AuthedLayoutOperationsIndexRouteImport } from './routes/_authedLayout/operations/index'
+import { Route as AuthedLayoutMembersIndexRouteImport } from './routes/_authedLayout/members/index'
+import { Route as AuthedLayoutHrIndexRouteImport } from './routes/_authedLayout/hr/index'
+import { Route as AuthedLayoutFinanceIndexRouteImport } from './routes/_authedLayout/finance/index'
+import { Route as AuthedLayoutConsultationsIndexRouteImport } from './routes/_authedLayout/consultations/index'
+import { Route as AuthedLayoutClassesIndexRouteImport } from './routes/_authedLayout/classes/index'
+import { Route as AuthedLayoutAdmissionsIndexRouteImport } from './routes/_authedLayout/admissions/index'
 import { Route as AuthedLayoutAboutIndexRouteImport } from './routes/_authedLayout/about/index'
 
 const LoginLayoutRouteRoute = LoginLayoutRouteRouteImport.update({
@@ -51,6 +58,47 @@ const LoginLayoutFindIdIndexRoute = LoginLayoutFindIdIndexRouteImport.update({
   path: '/findId/',
   getParentRoute: () => LoginLayoutRouteRoute,
 } as any)
+const AuthedLayoutOperationsIndexRoute =
+  AuthedLayoutOperationsIndexRouteImport.update({
+    id: '/operations/',
+    path: '/operations/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
+const AuthedLayoutMembersIndexRoute =
+  AuthedLayoutMembersIndexRouteImport.update({
+    id: '/members/',
+    path: '/members/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
+const AuthedLayoutHrIndexRoute = AuthedLayoutHrIndexRouteImport.update({
+  id: '/hr/',
+  path: '/hr/',
+  getParentRoute: () => AuthedLayoutRouteRoute,
+} as any)
+const AuthedLayoutFinanceIndexRoute =
+  AuthedLayoutFinanceIndexRouteImport.update({
+    id: '/finance/',
+    path: '/finance/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
+const AuthedLayoutConsultationsIndexRoute =
+  AuthedLayoutConsultationsIndexRouteImport.update({
+    id: '/consultations/',
+    path: '/consultations/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
+const AuthedLayoutClassesIndexRoute =
+  AuthedLayoutClassesIndexRouteImport.update({
+    id: '/classes/',
+    path: '/classes/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
+const AuthedLayoutAdmissionsIndexRoute =
+  AuthedLayoutAdmissionsIndexRouteImport.update({
+    id: '/admissions/',
+    path: '/admissions/',
+    getParentRoute: () => AuthedLayoutRouteRoute,
+  } as any)
 const AuthedLayoutAboutIndexRoute = AuthedLayoutAboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
@@ -61,6 +109,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/admissions': typeof AuthedLayoutAdmissionsIndexRoute
+  '/classes': typeof AuthedLayoutClassesIndexRoute
+  '/consultations': typeof AuthedLayoutConsultationsIndexRoute
+  '/finance': typeof AuthedLayoutFinanceIndexRoute
+  '/hr': typeof AuthedLayoutHrIndexRoute
+  '/members': typeof AuthedLayoutMembersIndexRoute
+  '/operations': typeof AuthedLayoutOperationsIndexRoute
   '/findId': typeof LoginLayoutFindIdIndexRoute
   '/findPw': typeof LoginLayoutFindPwIndexRoute
   '/signUp': typeof LoginLayoutSignUpIndexRoute
@@ -69,6 +124,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/admissions': typeof AuthedLayoutAdmissionsIndexRoute
+  '/classes': typeof AuthedLayoutClassesIndexRoute
+  '/consultations': typeof AuthedLayoutConsultationsIndexRoute
+  '/finance': typeof AuthedLayoutFinanceIndexRoute
+  '/hr': typeof AuthedLayoutHrIndexRoute
+  '/members': typeof AuthedLayoutMembersIndexRoute
+  '/operations': typeof AuthedLayoutOperationsIndexRoute
   '/findId': typeof LoginLayoutFindIdIndexRoute
   '/findPw': typeof LoginLayoutFindPwIndexRoute
   '/signUp': typeof LoginLayoutSignUpIndexRoute
@@ -80,15 +142,48 @@ export interface FileRoutesById {
   '/_loginLayout': typeof LoginLayoutRouteRouteWithChildren
   '/login/': typeof LoginIndexRoute
   '/_authedLayout/about/': typeof AuthedLayoutAboutIndexRoute
+  '/_authedLayout/admissions/': typeof AuthedLayoutAdmissionsIndexRoute
+  '/_authedLayout/classes/': typeof AuthedLayoutClassesIndexRoute
+  '/_authedLayout/consultations/': typeof AuthedLayoutConsultationsIndexRoute
+  '/_authedLayout/finance/': typeof AuthedLayoutFinanceIndexRoute
+  '/_authedLayout/hr/': typeof AuthedLayoutHrIndexRoute
+  '/_authedLayout/members/': typeof AuthedLayoutMembersIndexRoute
+  '/_authedLayout/operations/': typeof AuthedLayoutOperationsIndexRoute
   '/_loginLayout/findId/': typeof LoginLayoutFindIdIndexRoute
   '/_loginLayout/findPw/': typeof LoginLayoutFindPwIndexRoute
   '/_loginLayout/signUp/': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/about' | '/findId' | '/findPw' | '/signUp'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/about'
+    | '/admissions'
+    | '/classes'
+    | '/consultations'
+    | '/finance'
+    | '/hr'
+    | '/members'
+    | '/operations'
+    | '/findId'
+    | '/findPw'
+    | '/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about' | '/findId' | '/findPw' | '/signUp'
+  to:
+    | '/'
+    | '/login'
+    | '/about'
+    | '/admissions'
+    | '/classes'
+    | '/consultations'
+    | '/finance'
+    | '/hr'
+    | '/members'
+    | '/operations'
+    | '/findId'
+    | '/findPw'
+    | '/signUp'
   id:
     | '__root__'
     | '/'
@@ -96,6 +191,13 @@ export interface FileRouteTypes {
     | '/_loginLayout'
     | '/login/'
     | '/_authedLayout/about/'
+    | '/_authedLayout/admissions/'
+    | '/_authedLayout/classes/'
+    | '/_authedLayout/consultations/'
+    | '/_authedLayout/finance/'
+    | '/_authedLayout/hr/'
+    | '/_authedLayout/members/'
+    | '/_authedLayout/operations/'
     | '/_loginLayout/findId/'
     | '/_loginLayout/findPw/'
     | '/_loginLayout/signUp/'
@@ -159,6 +261,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginLayoutFindIdIndexRouteImport
       parentRoute: typeof LoginLayoutRouteRoute
     }
+    '/_authedLayout/operations/': {
+      id: '/_authedLayout/operations/'
+      path: '/operations'
+      fullPath: '/operations'
+      preLoaderRoute: typeof AuthedLayoutOperationsIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/members/': {
+      id: '/_authedLayout/members/'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof AuthedLayoutMembersIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/hr/': {
+      id: '/_authedLayout/hr/'
+      path: '/hr'
+      fullPath: '/hr'
+      preLoaderRoute: typeof AuthedLayoutHrIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/finance/': {
+      id: '/_authedLayout/finance/'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof AuthedLayoutFinanceIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/consultations/': {
+      id: '/_authedLayout/consultations/'
+      path: '/consultations'
+      fullPath: '/consultations'
+      preLoaderRoute: typeof AuthedLayoutConsultationsIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/classes/': {
+      id: '/_authedLayout/classes/'
+      path: '/classes'
+      fullPath: '/classes'
+      preLoaderRoute: typeof AuthedLayoutClassesIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
+    '/_authedLayout/admissions/': {
+      id: '/_authedLayout/admissions/'
+      path: '/admissions'
+      fullPath: '/admissions'
+      preLoaderRoute: typeof AuthedLayoutAdmissionsIndexRouteImport
+      parentRoute: typeof AuthedLayoutRouteRoute
+    }
     '/_authedLayout/about/': {
       id: '/_authedLayout/about/'
       path: '/about'
@@ -171,10 +322,24 @@ declare module '@tanstack/react-router' {
 
 interface AuthedLayoutRouteRouteChildren {
   AuthedLayoutAboutIndexRoute: typeof AuthedLayoutAboutIndexRoute
+  AuthedLayoutAdmissionsIndexRoute: typeof AuthedLayoutAdmissionsIndexRoute
+  AuthedLayoutClassesIndexRoute: typeof AuthedLayoutClassesIndexRoute
+  AuthedLayoutConsultationsIndexRoute: typeof AuthedLayoutConsultationsIndexRoute
+  AuthedLayoutFinanceIndexRoute: typeof AuthedLayoutFinanceIndexRoute
+  AuthedLayoutHrIndexRoute: typeof AuthedLayoutHrIndexRoute
+  AuthedLayoutMembersIndexRoute: typeof AuthedLayoutMembersIndexRoute
+  AuthedLayoutOperationsIndexRoute: typeof AuthedLayoutOperationsIndexRoute
 }
 
 const AuthedLayoutRouteRouteChildren: AuthedLayoutRouteRouteChildren = {
   AuthedLayoutAboutIndexRoute: AuthedLayoutAboutIndexRoute,
+  AuthedLayoutAdmissionsIndexRoute: AuthedLayoutAdmissionsIndexRoute,
+  AuthedLayoutClassesIndexRoute: AuthedLayoutClassesIndexRoute,
+  AuthedLayoutConsultationsIndexRoute: AuthedLayoutConsultationsIndexRoute,
+  AuthedLayoutFinanceIndexRoute: AuthedLayoutFinanceIndexRoute,
+  AuthedLayoutHrIndexRoute: AuthedLayoutHrIndexRoute,
+  AuthedLayoutMembersIndexRoute: AuthedLayoutMembersIndexRoute,
+  AuthedLayoutOperationsIndexRoute: AuthedLayoutOperationsIndexRoute,
 }
 
 const AuthedLayoutRouteRouteWithChildren =
