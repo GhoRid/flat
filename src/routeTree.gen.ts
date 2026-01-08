@@ -9,13 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as HeaderLayoutRouteRouteImport } from './routes/_headerLayout/route'
 import { Route as AuthedLayoutRouteRouteImport } from './routes/_authedLayout/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SignUpIndexRouteImport } from './routes/signUp/index'
-import { Route as SignInIndexRouteImport } from './routes/signIn/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
+import { Route as HeaderLayoutSignUpIndexRouteImport } from './routes/_headerLayout/signUp/index'
+import { Route as HeaderLayoutSignInIndexRouteImport } from './routes/_headerLayout/signIn/index'
 import { Route as AuthedLayoutAboutIndexRouteImport } from './routes/_authedLayout/about/index'
 
+const HeaderLayoutRouteRoute = HeaderLayoutRouteRouteImport.update({
+  id: '/_headerLayout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthedLayoutRouteRoute = AuthedLayoutRouteRouteImport.update({
   id: '/_authedLayout',
   getParentRoute: () => rootRouteImport,
@@ -25,20 +30,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SignUpIndexRoute = SignUpIndexRouteImport.update({
-  id: '/signUp/',
-  path: '/signUp/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SignInIndexRoute = SignInIndexRouteImport.update({
-  id: '/signIn/',
-  path: '/signIn/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
   id: '/login/',
   path: '/login/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const HeaderLayoutSignUpIndexRoute = HeaderLayoutSignUpIndexRouteImport.update({
+  id: '/signUp/',
+  path: '/signUp/',
+  getParentRoute: () => HeaderLayoutRouteRoute,
+} as any)
+const HeaderLayoutSignInIndexRoute = HeaderLayoutSignInIndexRouteImport.update({
+  id: '/signIn/',
+  path: '/signIn/',
+  getParentRoute: () => HeaderLayoutRouteRoute,
 } as any)
 const AuthedLayoutAboutIndexRoute = AuthedLayoutAboutIndexRouteImport.update({
   id: '/about/',
@@ -49,51 +54,59 @@ const AuthedLayoutAboutIndexRoute = AuthedLayoutAboutIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
-  '/signIn': typeof SignInIndexRoute
-  '/signUp': typeof SignUpIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/signIn': typeof HeaderLayoutSignInIndexRoute
+  '/signUp': typeof HeaderLayoutSignUpIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
-  '/signIn': typeof SignInIndexRoute
-  '/signUp': typeof SignUpIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/signIn': typeof HeaderLayoutSignInIndexRoute
+  '/signUp': typeof HeaderLayoutSignUpIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authedLayout': typeof AuthedLayoutRouteRouteWithChildren
+  '/_headerLayout': typeof HeaderLayoutRouteRouteWithChildren
   '/login/': typeof LoginIndexRoute
-  '/signIn/': typeof SignInIndexRoute
-  '/signUp/': typeof SignUpIndexRoute
   '/_authedLayout/about/': typeof AuthedLayoutAboutIndexRoute
+  '/_headerLayout/signIn/': typeof HeaderLayoutSignInIndexRoute
+  '/_headerLayout/signUp/': typeof HeaderLayoutSignUpIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/signIn' | '/signUp' | '/about'
+  fullPaths: '/' | '/login' | '/about' | '/signIn' | '/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signIn' | '/signUp' | '/about'
+  to: '/' | '/login' | '/about' | '/signIn' | '/signUp'
   id:
     | '__root__'
     | '/'
     | '/_authedLayout'
+    | '/_headerLayout'
     | '/login/'
-    | '/signIn/'
-    | '/signUp/'
     | '/_authedLayout/about/'
+    | '/_headerLayout/signIn/'
+    | '/_headerLayout/signUp/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedLayoutRouteRoute: typeof AuthedLayoutRouteRouteWithChildren
+  HeaderLayoutRouteRoute: typeof HeaderLayoutRouteRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
-  SignInIndexRoute: typeof SignInIndexRoute
-  SignUpIndexRoute: typeof SignUpIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_headerLayout': {
+      id: '/_headerLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof HeaderLayoutRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authedLayout': {
       id: '/_authedLayout'
       path: ''
@@ -108,26 +121,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/signUp/': {
-      id: '/signUp/'
-      path: '/signUp'
-      fullPath: '/signUp'
-      preLoaderRoute: typeof SignUpIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/signIn/': {
-      id: '/signIn/'
-      path: '/signIn'
-      fullPath: '/signIn'
-      preLoaderRoute: typeof SignInIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login/': {
       id: '/login/'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_headerLayout/signUp/': {
+      id: '/_headerLayout/signUp/'
+      path: '/signUp'
+      fullPath: '/signUp'
+      preLoaderRoute: typeof HeaderLayoutSignUpIndexRouteImport
+      parentRoute: typeof HeaderLayoutRouteRoute
+    }
+    '/_headerLayout/signIn/': {
+      id: '/_headerLayout/signIn/'
+      path: '/signIn'
+      fullPath: '/signIn'
+      preLoaderRoute: typeof HeaderLayoutSignInIndexRouteImport
+      parentRoute: typeof HeaderLayoutRouteRoute
     }
     '/_authedLayout/about/': {
       id: '/_authedLayout/about/'
@@ -150,12 +163,24 @@ const AuthedLayoutRouteRouteChildren: AuthedLayoutRouteRouteChildren = {
 const AuthedLayoutRouteRouteWithChildren =
   AuthedLayoutRouteRoute._addFileChildren(AuthedLayoutRouteRouteChildren)
 
+interface HeaderLayoutRouteRouteChildren {
+  HeaderLayoutSignInIndexRoute: typeof HeaderLayoutSignInIndexRoute
+  HeaderLayoutSignUpIndexRoute: typeof HeaderLayoutSignUpIndexRoute
+}
+
+const HeaderLayoutRouteRouteChildren: HeaderLayoutRouteRouteChildren = {
+  HeaderLayoutSignInIndexRoute: HeaderLayoutSignInIndexRoute,
+  HeaderLayoutSignUpIndexRoute: HeaderLayoutSignUpIndexRoute,
+}
+
+const HeaderLayoutRouteRouteWithChildren =
+  HeaderLayoutRouteRoute._addFileChildren(HeaderLayoutRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedLayoutRouteRoute: AuthedLayoutRouteRouteWithChildren,
+  HeaderLayoutRouteRoute: HeaderLayoutRouteRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,
-  SignInIndexRoute: SignInIndexRoute,
-  SignUpIndexRoute: SignUpIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
