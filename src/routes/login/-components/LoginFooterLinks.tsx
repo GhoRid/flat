@@ -1,13 +1,14 @@
+import { Link } from "@tanstack/react-router";
 import styled from "styled-components";
 
 export default function LoginFooterLinks() {
   return (
     <BottomLinks>
-      <BottomLinkButton type="button">비밀번호 재설정</BottomLinkButton>
+      <BottomLink to="/reset-password">비밀번호 재설정</BottomLink>
       <Divider>|</Divider>
-      <BottomLinkButton type="button">아이디 찾기</BottomLinkButton>
+      <BottomLink to="/reset-password">아이디 찾기</BottomLink>
       <Divider>|</Divider>
-      <BottomLinkButton type="button">회원가입</BottomLinkButton>
+      <BottomLink to="/signup">회원가입</BottomLink>
     </BottomLinks>
   );
 }
@@ -21,7 +22,7 @@ const BottomLinks = styled.div`
   color: #9ca3af;
 `;
 
-const BottomLinkButton = styled.button`
+const BottomLink = styled(Link)`
   border: none;
   background: transparent;
   cursor: pointer;

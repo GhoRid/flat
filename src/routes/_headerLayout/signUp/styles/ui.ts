@@ -10,7 +10,7 @@ export const Page = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 400px;
+  max-width: 440px;
 `;
 
 export const Title = styled.h1`
