@@ -17,13 +17,21 @@ export function useFindIdForm() {
 
   const validity = useMemo(() => {
     const nameOk = values.name.trim().length >= 2;
-    const phoneOk = /^\d{10,11}$/.test(values.phone);
+    const phoneOk = /^\d{11}$/.test(values.phone);
     const otpOk = /^\d{6}$/.test(values.otp); // ✅ 6자리
     return { nameOk, phoneOk, otpOk };
   }, [values]);
 
   function setValue<K extends keyof Values>(key: K, val: Values[K]) {
-    setValues((prev) => ({ ...prev, [key]: val }));
+    setValues((prev) => {
+      if (key === "phone") {
+        const raw = String(val ?? "");
+        const digitsOnly = raw.replace(/\D/g, "").slice(0, 11);
+        return { ...prev, phone: digitsOnly };
+      }
+
+      return { ...prev, [key]: val };
+    });
   }
 
   function onSendOtp() {

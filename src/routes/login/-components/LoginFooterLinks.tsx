@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function LoginFooterLinks() {
   return (
     <BottomLinks>
-      <BottomLink to="/reset-password">비밀번호 재설정</BottomLink>
+      <BottomLink to="/findPw">비밀번호 재설정</BottomLink>
       <Divider>|</Divider>
       <BottomLink to="/findId">아이디 찾기</BottomLink>
       <Divider>|</Divider>

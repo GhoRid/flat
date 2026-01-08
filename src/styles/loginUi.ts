@@ -109,6 +109,24 @@ export const IconButton = styled.button`
   padding: 0;
 `;
 
+export const PrimaryButton = styled.button`
+  margin-top: 22px;
+  width: 100%;
+  height: 56px;
+  border-radius: 14px;
+  border: 0;
+  background: #f1f1f1;
+  color: #111;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+`;
+
 export const Helper = styled.div`
   font-size: 14px;
   color: ${colors.dark_gray};

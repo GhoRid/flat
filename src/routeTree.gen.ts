@@ -14,6 +14,7 @@ import { Route as AuthedLayoutRouteRouteImport } from './routes/_authedLayout/ro
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as LoginLayoutSignUpIndexRouteImport } from './routes/_loginLayout/signUp/index'
+import { Route as LoginLayoutFindPwIndexRouteImport } from './routes/_loginLayout/findPw/index'
 import { Route as LoginLayoutFindIdIndexRouteImport } from './routes/_loginLayout/findId/index'
 import { Route as AuthedLayoutAboutIndexRouteImport } from './routes/_authedLayout/about/index'
 
@@ -40,6 +41,11 @@ const LoginLayoutSignUpIndexRoute = LoginLayoutSignUpIndexRouteImport.update({
   path: '/signUp/',
   getParentRoute: () => LoginLayoutRouteRoute,
 } as any)
+const LoginLayoutFindPwIndexRoute = LoginLayoutFindPwIndexRouteImport.update({
+  id: '/findPw/',
+  path: '/findPw/',
+  getParentRoute: () => LoginLayoutRouteRoute,
+} as any)
 const LoginLayoutFindIdIndexRoute = LoginLayoutFindIdIndexRouteImport.update({
   id: '/findId/',
   path: '/findId/',
@@ -56,6 +62,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
   '/findId': typeof LoginLayoutFindIdIndexRoute
+  '/findPw': typeof LoginLayoutFindPwIndexRoute
   '/signUp': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRoutesByTo {
@@ -63,6 +70,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
   '/findId': typeof LoginLayoutFindIdIndexRoute
+  '/findPw': typeof LoginLayoutFindPwIndexRoute
   '/signUp': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRoutesById {
@@ -73,13 +81,14 @@ export interface FileRoutesById {
   '/login/': typeof LoginIndexRoute
   '/_authedLayout/about/': typeof AuthedLayoutAboutIndexRoute
   '/_loginLayout/findId/': typeof LoginLayoutFindIdIndexRoute
+  '/_loginLayout/findPw/': typeof LoginLayoutFindPwIndexRoute
   '/_loginLayout/signUp/': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/about' | '/findId' | '/signUp'
+  fullPaths: '/' | '/login' | '/about' | '/findId' | '/findPw' | '/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about' | '/findId' | '/signUp'
+  to: '/' | '/login' | '/about' | '/findId' | '/findPw' | '/signUp'
   id:
     | '__root__'
     | '/'
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/login/'
     | '/_authedLayout/about/'
     | '/_loginLayout/findId/'
+    | '/_loginLayout/findPw/'
     | '/_loginLayout/signUp/'
   fileRoutesById: FileRoutesById
 }
@@ -135,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginLayoutSignUpIndexRouteImport
       parentRoute: typeof LoginLayoutRouteRoute
     }
+    '/_loginLayout/findPw/': {
+      id: '/_loginLayout/findPw/'
+      path: '/findPw'
+      fullPath: '/findPw'
+      preLoaderRoute: typeof LoginLayoutFindPwIndexRouteImport
+      parentRoute: typeof LoginLayoutRouteRoute
+    }
     '/_loginLayout/findId/': {
       id: '/_loginLayout/findId/'
       path: '/findId'
@@ -165,11 +182,13 @@ const AuthedLayoutRouteRouteWithChildren =
 
 interface LoginLayoutRouteRouteChildren {
   LoginLayoutFindIdIndexRoute: typeof LoginLayoutFindIdIndexRoute
+  LoginLayoutFindPwIndexRoute: typeof LoginLayoutFindPwIndexRoute
   LoginLayoutSignUpIndexRoute: typeof LoginLayoutSignUpIndexRoute
 }
 
 const LoginLayoutRouteRouteChildren: LoginLayoutRouteRouteChildren = {
   LoginLayoutFindIdIndexRoute: LoginLayoutFindIdIndexRoute,
+  LoginLayoutFindPwIndexRoute: LoginLayoutFindPwIndexRoute,
   LoginLayoutSignUpIndexRoute: LoginLayoutSignUpIndexRoute,
 }
 
