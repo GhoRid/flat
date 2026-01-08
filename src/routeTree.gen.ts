@@ -9,17 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as HeaderLayoutRouteRouteImport } from './routes/_headerLayout/route'
+import { Route as LoginLayoutRouteRouteImport } from './routes/_loginLayout/route'
 import { Route as AuthedLayoutRouteRouteImport } from './routes/_authedLayout/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
-import { Route as HeaderLayoutSignUpIndexRouteImport } from './routes/_headerLayout/signUp/index'
-import { Route as HeaderLayoutSignInIndexRouteImport } from './routes/_headerLayout/signIn/index'
-import { Route as HeaderLayoutFindIdIndexRouteImport } from './routes/_headerLayout/findId/index'
+import { Route as LoginLayoutSignUpIndexRouteImport } from './routes/_loginLayout/signUp/index'
+import { Route as LoginLayoutFindIdIndexRouteImport } from './routes/_loginLayout/findId/index'
 import { Route as AuthedLayoutAboutIndexRouteImport } from './routes/_authedLayout/about/index'
 
-const HeaderLayoutRouteRoute = HeaderLayoutRouteRouteImport.update({
-  id: '/_headerLayout',
+const LoginLayoutRouteRoute = LoginLayoutRouteRouteImport.update({
+  id: '/_loginLayout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedLayoutRouteRoute = AuthedLayoutRouteRouteImport.update({
@@ -36,20 +35,15 @@ const LoginIndexRoute = LoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HeaderLayoutSignUpIndexRoute = HeaderLayoutSignUpIndexRouteImport.update({
+const LoginLayoutSignUpIndexRoute = LoginLayoutSignUpIndexRouteImport.update({
   id: '/signUp/',
   path: '/signUp/',
-  getParentRoute: () => HeaderLayoutRouteRoute,
+  getParentRoute: () => LoginLayoutRouteRoute,
 } as any)
-const HeaderLayoutSignInIndexRoute = HeaderLayoutSignInIndexRouteImport.update({
-  id: '/signIn/',
-  path: '/signIn/',
-  getParentRoute: () => HeaderLayoutRouteRoute,
-} as any)
-const HeaderLayoutFindIdIndexRoute = HeaderLayoutFindIdIndexRouteImport.update({
+const LoginLayoutFindIdIndexRoute = LoginLayoutFindIdIndexRouteImport.update({
   id: '/findId/',
   path: '/findId/',
-  getParentRoute: () => HeaderLayoutRouteRoute,
+  getParentRoute: () => LoginLayoutRouteRoute,
 } as any)
 const AuthedLayoutAboutIndexRoute = AuthedLayoutAboutIndexRouteImport.update({
   id: '/about/',
@@ -61,60 +55,56 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
-  '/findId': typeof HeaderLayoutFindIdIndexRoute
-  '/signIn': typeof HeaderLayoutSignInIndexRoute
-  '/signUp': typeof HeaderLayoutSignUpIndexRoute
+  '/findId': typeof LoginLayoutFindIdIndexRoute
+  '/signUp': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
-  '/findId': typeof HeaderLayoutFindIdIndexRoute
-  '/signIn': typeof HeaderLayoutSignInIndexRoute
-  '/signUp': typeof HeaderLayoutSignUpIndexRoute
+  '/findId': typeof LoginLayoutFindIdIndexRoute
+  '/signUp': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authedLayout': typeof AuthedLayoutRouteRouteWithChildren
-  '/_headerLayout': typeof HeaderLayoutRouteRouteWithChildren
+  '/_loginLayout': typeof LoginLayoutRouteRouteWithChildren
   '/login/': typeof LoginIndexRoute
   '/_authedLayout/about/': typeof AuthedLayoutAboutIndexRoute
-  '/_headerLayout/findId/': typeof HeaderLayoutFindIdIndexRoute
-  '/_headerLayout/signIn/': typeof HeaderLayoutSignInIndexRoute
-  '/_headerLayout/signUp/': typeof HeaderLayoutSignUpIndexRoute
+  '/_loginLayout/findId/': typeof LoginLayoutFindIdIndexRoute
+  '/_loginLayout/signUp/': typeof LoginLayoutSignUpIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/about' | '/findId' | '/signIn' | '/signUp'
+  fullPaths: '/' | '/login' | '/about' | '/findId' | '/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about' | '/findId' | '/signIn' | '/signUp'
+  to: '/' | '/login' | '/about' | '/findId' | '/signUp'
   id:
     | '__root__'
     | '/'
     | '/_authedLayout'
-    | '/_headerLayout'
+    | '/_loginLayout'
     | '/login/'
     | '/_authedLayout/about/'
-    | '/_headerLayout/findId/'
-    | '/_headerLayout/signIn/'
-    | '/_headerLayout/signUp/'
+    | '/_loginLayout/findId/'
+    | '/_loginLayout/signUp/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedLayoutRouteRoute: typeof AuthedLayoutRouteRouteWithChildren
-  HeaderLayoutRouteRoute: typeof HeaderLayoutRouteRouteWithChildren
+  LoginLayoutRouteRoute: typeof LoginLayoutRouteRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_headerLayout': {
-      id: '/_headerLayout'
+    '/_loginLayout': {
+      id: '/_loginLayout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof HeaderLayoutRouteRouteImport
+      preLoaderRoute: typeof LoginLayoutRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authedLayout': {
@@ -138,26 +128,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_headerLayout/signUp/': {
-      id: '/_headerLayout/signUp/'
+    '/_loginLayout/signUp/': {
+      id: '/_loginLayout/signUp/'
       path: '/signUp'
       fullPath: '/signUp'
-      preLoaderRoute: typeof HeaderLayoutSignUpIndexRouteImport
-      parentRoute: typeof HeaderLayoutRouteRoute
+      preLoaderRoute: typeof LoginLayoutSignUpIndexRouteImport
+      parentRoute: typeof LoginLayoutRouteRoute
     }
-    '/_headerLayout/signIn/': {
-      id: '/_headerLayout/signIn/'
-      path: '/signIn'
-      fullPath: '/signIn'
-      preLoaderRoute: typeof HeaderLayoutSignInIndexRouteImport
-      parentRoute: typeof HeaderLayoutRouteRoute
-    }
-    '/_headerLayout/findId/': {
-      id: '/_headerLayout/findId/'
+    '/_loginLayout/findId/': {
+      id: '/_loginLayout/findId/'
       path: '/findId'
       fullPath: '/findId'
-      preLoaderRoute: typeof HeaderLayoutFindIdIndexRouteImport
-      parentRoute: typeof HeaderLayoutRouteRoute
+      preLoaderRoute: typeof LoginLayoutFindIdIndexRouteImport
+      parentRoute: typeof LoginLayoutRouteRoute
     }
     '/_authedLayout/about/': {
       id: '/_authedLayout/about/'
@@ -180,25 +163,23 @@ const AuthedLayoutRouteRouteChildren: AuthedLayoutRouteRouteChildren = {
 const AuthedLayoutRouteRouteWithChildren =
   AuthedLayoutRouteRoute._addFileChildren(AuthedLayoutRouteRouteChildren)
 
-interface HeaderLayoutRouteRouteChildren {
-  HeaderLayoutFindIdIndexRoute: typeof HeaderLayoutFindIdIndexRoute
-  HeaderLayoutSignInIndexRoute: typeof HeaderLayoutSignInIndexRoute
-  HeaderLayoutSignUpIndexRoute: typeof HeaderLayoutSignUpIndexRoute
+interface LoginLayoutRouteRouteChildren {
+  LoginLayoutFindIdIndexRoute: typeof LoginLayoutFindIdIndexRoute
+  LoginLayoutSignUpIndexRoute: typeof LoginLayoutSignUpIndexRoute
 }
 
-const HeaderLayoutRouteRouteChildren: HeaderLayoutRouteRouteChildren = {
-  HeaderLayoutFindIdIndexRoute: HeaderLayoutFindIdIndexRoute,
-  HeaderLayoutSignInIndexRoute: HeaderLayoutSignInIndexRoute,
-  HeaderLayoutSignUpIndexRoute: HeaderLayoutSignUpIndexRoute,
+const LoginLayoutRouteRouteChildren: LoginLayoutRouteRouteChildren = {
+  LoginLayoutFindIdIndexRoute: LoginLayoutFindIdIndexRoute,
+  LoginLayoutSignUpIndexRoute: LoginLayoutSignUpIndexRoute,
 }
 
-const HeaderLayoutRouteRouteWithChildren =
-  HeaderLayoutRouteRoute._addFileChildren(HeaderLayoutRouteRouteChildren)
+const LoginLayoutRouteRouteWithChildren =
+  LoginLayoutRouteRoute._addFileChildren(LoginLayoutRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedLayoutRouteRoute: AuthedLayoutRouteRouteWithChildren,
-  HeaderLayoutRouteRoute: HeaderLayoutRouteRouteWithChildren,
+  LoginLayoutRouteRoute: LoginLayoutRouteRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,
 }
 export const routeTree = rootRouteImport

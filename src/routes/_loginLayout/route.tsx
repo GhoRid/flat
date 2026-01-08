@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import styled from "styled-components";
 import FlatLogo from "@svgs/FlatLogo.svg?react";
 
-export const Route = createFileRoute("/_headerLayout")({
+export const Route = createFileRoute("/_loginLayout")({
   component: RouteComponent,
 });
 

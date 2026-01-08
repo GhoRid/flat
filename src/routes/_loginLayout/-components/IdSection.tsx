@@ -4,7 +4,7 @@ import {
   Row,
   Section,
   SideButton,
-} from "../../../../styles/loginUi";
+} from "../../../styles/loginUi";
 
 type Props = {
   email: string;

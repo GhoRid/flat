@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "./colors";
 
-export const Page = styled.div`
+export const Wrapper = styled.div`
   min-height: 100vh;
   background: #fff;
   display: flex;
@@ -19,6 +19,11 @@ export const Title = styled.h1`
   font-size: 20px;
   font-weight: 700;
   color: ${colors.app_black};
+`;
+
+export const SubTitle = styled.h2`
+  font-size: 22px;
+  font-weight: 600;
 `;
 
 export const FormBox = styled.div`

@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useSignUpForm } from "../../../hooks/useSignUpForm";
-import IdSection from "./-components/IdSection";
-import PasswordSection from "./-components/PasswordSection";
-import NameSection from "./-components/NameSection";
-import PhoneSection from "./-components/PhoneSection";
-import AgreeSection from "./-components/AgreeSection";
+import IdSection from "../-components/IdSection";
+import PasswordSection from "../-components/PasswordSection";
+import NameSection from "../-components/NameSection";
+import PhoneSection from "../-components/PhoneSection";
+import AgreeSection from "../-components/AgreeSection";
 import {
-  Page,
+  Wrapper,
   Container,
   FormBox,
   Title,
   SubmitButton,
 } from "../../../styles/loginUi";
 
-export const Route = createFileRoute("/_headerLayout/signUp/")({
+export const Route = createFileRoute("/_loginLayout/signUp/")({
   component: RouteComponent,
 });
 
@@ -32,7 +32,7 @@ function RouteComponent() {
   } = useSignUpForm();
 
   return (
-    <Page>
+    <Wrapper>
       <Container>
         <Title>플랫 회원가입</Title>
 
@@ -80,6 +80,6 @@ function RouteComponent() {
 
         {/* <SignUpFooter /> */}
       </Container>
-    </Page>
+    </Wrapper>
   );
 }

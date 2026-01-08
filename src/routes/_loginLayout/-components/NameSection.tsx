@@ -1,4 +1,4 @@
-import { Input, Label, Section } from "../../../../styles/loginUi";
+import { Input, Label, Section } from "../../../styles/loginUi";
 
 type Props = {
   name: string;

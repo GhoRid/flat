@@ -5,7 +5,7 @@ import {
   Label,
   Section,
   Helper,
-} from "../../../../styles/loginUi";
+} from "../../../styles/loginUi";
 import ShownHideIcon from "@svgs/ShownHide.svg?react";
 import HideIcon from "@svgs/hide.svg?react";
 import styled from "styled-components";
