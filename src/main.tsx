@@ -5,9 +5,16 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
+import { authStore } from "./auth/authStore";
 
 // Create a new router instance
-const router = createRouter({ routeTree });
+
+const router = createRouter({
+  routeTree,
+  context: {
+    auth: undefined! as typeof authStore,
+  },
+});
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
@@ -23,7 +30,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <GlobalStyle />
-      <RouterProvider router={router} />
+      <RouterProvider router={router} context={{ auth: authStore }} />
     </StrictMode>
   );
 }
