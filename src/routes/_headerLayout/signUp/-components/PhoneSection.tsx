@@ -1,4 +1,10 @@
-import { Input, Label, Row, Section, SideButton } from "../../styles/ui";
+import {
+  Input,
+  Label,
+  Row,
+  Section,
+  SideButton,
+} from "../../../../styles/loginUi";
 
 type Props = {
   phone: string;

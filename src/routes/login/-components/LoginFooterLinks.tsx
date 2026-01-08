@@ -6,7 +6,7 @@ export default function LoginFooterLinks() {
     <BottomLinks>
       <BottomLink to="/reset-password">비밀번호 재설정</BottomLink>
       <Divider>|</Divider>
-      <BottomLink to="/reset-password">아이디 찾기</BottomLink>
+      <BottomLink to="/findId">아이디 찾기</BottomLink>
       <Divider>|</Divider>
       <BottomLink to="/signup">회원가입</BottomLink>
     </BottomLinks>
