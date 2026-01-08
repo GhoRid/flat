@@ -6,6 +6,8 @@ type Values = {
   pw2: string;
   name: string;
   phone: string;
+  otp: string;
+  otpSent: boolean;
   agree: boolean;
 };
 
@@ -16,6 +18,8 @@ export function useSignUpForm() {
     pw2: "",
     name: "",
     phone: "",
+    otp: "",
+    otpSent: false,
     agree: false,
   });
 
@@ -35,10 +39,11 @@ export function useSignUpForm() {
     const pw2Ok = values.pw2.length > 0 && values.pw === values.pw2;
     const nameOk = values.name.trim().length >= 2;
     const phoneOk = /^\d{10,11}$/.test(values.phone);
+    const otpOk = /^\d{6}$/.test(values.otp);
     const canSubmit =
       emailOk && pwOk && pw2Ok && nameOk && phoneOk && values.agree;
 
-    return { emailOk, pwOk, pw2Ok, nameOk, phoneOk, canSubmit };
+    return { emailOk, pwOk, pw2Ok, nameOk, phoneOk, otpOk, canSubmit };
   }, [values, pwRegex]);
 
   function setValue<K extends keyof Values>(key: K, val: Values[K]) {
@@ -63,8 +68,19 @@ export function useSignUpForm() {
   }
 
   function onSendOtp() {
-    // TODO: 인증번호 전송 API
     console.log("인증번호 전송:", values.phone);
+
+    setValues((prev) => ({
+      ...prev,
+      otpSent: true,
+      otp: "", // 재전송 시 초기화(원하면 제거)
+    }));
+  }
+
+  function onVerifyOtp() {
+    if (!validity.otpOk) return;
+    // TODO: 인증번호 검증 API
+    console.log("아이디 찾기 - 인증번호 검증:", values.otp);
   }
 
   function onSubmit() {
@@ -83,6 +99,7 @@ export function useSignUpForm() {
     toggleShowPassword2: toggleShowPassword2,
     onEmailDupCheck,
     onSendOtp,
+    onVerifyOtp,
     onSubmit,
   };
 }

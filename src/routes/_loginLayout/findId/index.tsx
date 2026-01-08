@@ -15,7 +15,8 @@ export const Route = createFileRoute("/_loginLayout/findId/")({
 });
 
 function RouteComponent() {
-  const { values, validity, setValue, onSendOtp } = useFindIdForm();
+  const { values, validity, setValue, onSendOtp, onVerifyOtp } =
+    useFindIdForm();
 
   return (
     <Wrapper>
@@ -34,6 +35,11 @@ function RouteComponent() {
             setPhone={(v) => setValue("phone", v)}
             phoneOk={validity.phoneOk}
             onSendOtp={onSendOtp}
+            otpSent={values.otpSent}
+            otp={values.otp}
+            setOtp={(v) => setValue("otp", v)}
+            otpOk={validity.otpOk}
+            onVerifyOtp={onVerifyOtp}
           />
         </FormBox>
       </Container>

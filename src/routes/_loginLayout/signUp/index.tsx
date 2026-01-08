@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useSignUpForm } from "../../../hooks/useSignUpForm";
+import { useSignUpForm } from "../../../hooks/useAuthInputForm";
 import IdSection from "../-components/IdSection";
 import PasswordSection from "../-components/PasswordSection";
 import NameSection from "../-components/NameSection";
@@ -28,6 +28,7 @@ function RouteComponent() {
     toggleShowPassword2,
     onEmailDupCheck,
     onSendOtp,
+    onVerifyOtp,
     onSubmit,
   } = useSignUpForm();
 
@@ -65,6 +66,11 @@ function RouteComponent() {
             setPhone={(v) => setValue("phone", v)}
             phoneOk={validity.phoneOk}
             onSendOtp={onSendOtp}
+            otpSent={values.otpSent}
+            otp={values.otp}
+            setOtp={(v) => setValue("otp", v)}
+            otpOk={validity.otpOk}
+            onVerifyOtp={onVerifyOtp}
           />
 
           <AgreeSection agree={values.agree} toggleAgree={toggleAgree} />
