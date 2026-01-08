@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useSignUpForm } from "../../../hooks/useAuthInputForm";
 import IdSection from "../-components/IdSection";
 import PasswordSection from "../-components/PasswordSection";
 import NameSection from "../-components/NameSection";
@@ -12,6 +11,7 @@ import {
   Title,
   SubmitButton,
 } from "../../../styles/loginUi";
+import useSignUpForm from "../../../hooks/useSignUpForm";
 
 export const Route = createFileRoute("/_loginLayout/signUp/")({
   component: RouteComponent,

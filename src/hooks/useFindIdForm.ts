@@ -7,7 +7,7 @@ type Values = {
   otpSent: boolean;
 };
 
-export function useFindIdForm() {
+const useFindIdForm = () => {
   const [values, setValues] = useState<Values>({
     name: "",
     phone: "",
@@ -22,7 +22,7 @@ export function useFindIdForm() {
     return { nameOk, phoneOk, otpOk };
   }, [values]);
 
-  function setValue<K extends keyof Values>(key: K, val: Values[K]) {
+  const setValue = <K extends keyof Values>(key: K, val: Values[K]) => {
     setValues((prev) => {
       if (key === "phone") {
         const raw = String(val ?? "");
@@ -32,9 +32,9 @@ export function useFindIdForm() {
 
       return { ...prev, [key]: val };
     });
-  }
+  };
 
-  function onSendOtp() {
+  const onSendOtp = () => {
     // TODO: 인증번호 전송 API
     console.log("아이디 찾기 - 인증번호 전송:", values.phone);
 
@@ -44,13 +44,15 @@ export function useFindIdForm() {
       otpSent: true,
       otp: "", // 재전송 시 초기화(원하면 제거)
     }));
-  }
+  };
 
-  function onVerifyOtp() {
+  const onVerifyOtp = () => {
     if (!validity.otpOk) return;
     // TODO: 인증번호 검증 API
     console.log("아이디 찾기 - 인증번호 검증:", values.otp);
-  }
+  };
 
   return { values, validity, setValue, onSendOtp, onVerifyOtp };
-}
+};
+
+export default useFindIdForm;

@@ -1,55 +1,44 @@
 // import { useState } from "react";
 // import styled from "styled-components";
-// import DashBoardIcon from "../assets/svgs/dashboard.svg";
-// import { ReactComponent as MenuIcon } from "../assets/svgs/Menu.svg";
-// import { ReactComponent as SpotManagementIcon } from "../assets/svgs/SpotManagement.svg";
-// import { ReactComponent as ReconciliationIcon } from "../assets/svgs/Reconciliation.svg";
-// import { ReactComponent as UserManagementIcon } from "../assets/svgs/UserManagement.svg";
-// import { ReactComponent as StatisticsIcon } from "../assets/svgs/Statistics.svg";
-// import { ReactComponent as RiumIcon } from "../assets/svgs/RiumLogo.svg";
-// import { clearTokens } from "../utils/token";
-// import { useIsBelowWidthPx } from "../hooks/useIsBelowWidthPx";
-// import { Outlet, useLocation, useNavigate } from "@tanstack/react-router";
-// import { colors } from "../colors";
 
-// const menus = [
-//   {
-//     key: "dashboard",
-//     label: "대시보드",
-//     path: "/",
-//     icon: <DashBoardIcon color={colors.app_main_color} />,
-//   },
-//   {
-//     key: "operation",
-//     label: "운영 관리",
-//     path: "/operation",
-//     icon: <SpotManagementIcon color={colors.app_main_color} />,
-//   },
-//   {
-//     key: "sales",
-//     label: "매출 정산",
-//     path: "/sales",
-//     icon: <ReconciliationIcon color={colors.app_main_color} />,
-//   },
-//   {
-//     key: "statistics",
-//     label: "통계",
-//     path: "/statistics",
-//     icon: <StatisticsIcon color={colors.app_main_color} />,
-//   },
-//   {
-//     key: "members",
-//     label: "회원 관리",
-//     path: "/members",
-//     icon: <UserManagementIcon color={colors.app_main_color} />,
-//   },
-// ] as const;
+// // const menus = [
+// //   {
+// //     key: "dashboard",
+// //     label: "대시보드",
+// //     path: "/",
+// //     icon: <DashBoardIcon color={colors.app_main_color} />,
+// //   },
+// //   {
+// //     key: "operation",
+// //     label: "운영 관리",
+// //     path: "/operation",
+// //     icon: <SpotManagementIcon color={colors.app_main_color} />,
+// //   },
+// //   {
+// //     key: "sales",
+// //     label: "매출 정산",
+// //     path: "/sales",
+// //     icon: <ReconciliationIcon color={colors.app_main_color} />,
+// //   },
+// //   {
+// //     key: "statistics",
+// //     label: "통계",
+// //     path: "/statistics",
+// //     icon: <StatisticsIcon color={colors.app_main_color} />,
+// //   },
+// //   {
+// //     key: "members",
+// //     label: "회원 관리",
+// //     path: "/members",
+// //     icon: <UserManagementIcon color={colors.app_main_color} />,
+// //   },
+// // ] as const;
 
-// const MainLayout = () => {
+// const MainLayout = ({}) => {
 //   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 //   const location = useLocation();
 //   const navigate = useNavigate();
-//   const isBelow1280 = useIsBelowWidthPx(1280);
+//   //   const isBelow1280 = useIsBelowWidthPx(1280);
 
 //   return (
 //     <Layout>
@@ -76,7 +65,7 @@
 //       <Main>
 //         <SideBarContainer $isOpen={isSideBarOpen}>
 //           <MenuList role="navigation" aria-label="사이드바 메뉴">
-//             {menus.map((menu) => (
+//             {/* {menus.map((menu) => (
 //               <MenuItemButton
 //                 key={menu.key}
 //                 $isOpen={isSideBarOpen}
@@ -95,7 +84,7 @@
 //                   {menu.label}
 //                 </Label>
 //               </MenuItemButton>
-//             ))}
+//             ))} */}
 //           </MenuList>
 //         </SideBarContainer>
 //         <OutletContainer $isOpen={isSideBarOpen}>

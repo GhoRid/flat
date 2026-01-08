@@ -6,6 +6,7 @@ import {
   Section,
   SideButton,
 } from "../../../styles/loginUi";
+import { formatPhone } from "../../../utils/format";
 
 type Props = {
   phone: string;
@@ -40,7 +41,7 @@ export default function PhoneSection({
       <Box>
         <Row>
           <Input
-            value={phone}
+            value={formatPhone(phone)}
             onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, ""))}
             placeholder="휴대폰 번호"
             inputMode="numeric"

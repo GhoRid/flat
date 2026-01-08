@@ -6,7 +6,7 @@ import {
   Title,
   Wrapper,
 } from "../../../styles/loginUi";
-import { useFindIdForm } from "../../../hooks/useFindIdForm";
+import useFindIdForm from "../../../hooks/useFindIdForm";
 import NameSection from "../-components/NameSection";
 import PhoneSection from "../-components/PhoneSection";
 

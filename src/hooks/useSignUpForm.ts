@@ -11,7 +11,7 @@ type Values = {
   agree: boolean;
 };
 
-export function useSignUpForm() {
+const useSignUpForm = () => {
   const [values, setValues] = useState<Values>({
     email: "",
     pw: "",
@@ -46,7 +46,7 @@ export function useSignUpForm() {
     return { emailOk, pwOk, pw2Ok, nameOk, phoneOk, otpOk, canSubmit };
   }, [values, pwRegex]);
 
-  function setValue<K extends keyof Values>(key: K, val: Values[K]) {
+  const setValue = <K extends keyof Values>(key: K, val: Values[K]) => {
     setValues((prev) => {
       if (key === "phone") {
         const raw = String(val ?? "");
@@ -56,26 +56,26 @@ export function useSignUpForm() {
 
       return { ...prev, [key]: val };
     });
-  }
+  };
 
-  function toggleAgree() {
+  const toggleAgree = () => {
     setValues((prev) => ({ ...prev, agree: !prev.agree }));
-  }
+  };
 
-  function toggleShowPassword() {
+  const toggleShowPassword = () => {
     setUi((p) => ({ ...p, showPassword: !p.showPassword }));
-  }
+  };
 
-  function toggleShowPassword2() {
+  const toggleShowPassword2 = () => {
     setUi((p) => ({ ...p, showPassword2: !p.showPassword2 }));
-  }
+  };
 
-  function onEmailDupCheck() {
+  const onEmailDupCheck = () => {
     // TODO: 이메일 중복확인 API
     console.log("중복 확인:", values.email);
-  }
+  };
 
-  function onSendOtp() {
+  const onSendOtp = () => {
     console.log("인증번호 전송:", values.phone);
 
     setValues((prev) => ({
@@ -83,19 +83,19 @@ export function useSignUpForm() {
       otpSent: true,
       otp: "", // 재전송 시 초기화(원하면 제거)
     }));
-  }
+  };
 
-  function onVerifyOtp() {
+  const onVerifyOtp = () => {
     if (!validity.otpOk) return;
     // TODO: 인증번호 검증 API
     console.log("아이디 찾기 - 인증번호 검증:", values.otp);
-  }
+  };
 
-  function onSubmit() {
+  const onSubmit = () => {
     if (!validity.canSubmit) return;
     // TODO: 회원가입 API
     console.log("회원가입:", values);
-  }
+  };
 
   return {
     values,
@@ -110,4 +110,5 @@ export function useSignUpForm() {
     onVerifyOtp,
     onSubmit,
   };
-}
+};
+export default useSignUpForm;

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Container, FormBox, Title, Wrapper } from "../../../styles/loginUi";
-import { useFindPwFlow } from "../../../hooks/useFindPwFlow";
+import useFindPwFlow from "../../../hooks/useFindPwFlow";
 import StepEmail from "./-steps/StepEmail";
 import StepVerify from "./-steps/StepVerify";
 import StepReset from "./-steps/StepReset";
