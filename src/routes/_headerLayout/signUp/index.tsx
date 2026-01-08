@@ -5,7 +5,7 @@ import PasswordSection from "./-components/PasswordSection";
 import NameSection from "./-components/NameSection";
 import PhoneSection from "./-components/PhoneSection";
 import AgreeSection from "./-components/AgreeSection";
-import { Page, Container, FormBox, Title, SubmitButton } from "./styles/ui";
+import { Page, Container, FormBox, Title, SubmitButton } from "../styles/ui";
 
 export const Route = createFileRoute("/_headerLayout/signUp/")({
   component: RouteComponent,

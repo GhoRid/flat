@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as HeaderLayoutSignUpIndexRouteImport } from './routes/_headerLayout/signUp/index'
 import { Route as HeaderLayoutSignInIndexRouteImport } from './routes/_headerLayout/signIn/index'
+import { Route as HeaderLayoutFindIdIndexRouteImport } from './routes/_headerLayout/findId/index'
 import { Route as AuthedLayoutAboutIndexRouteImport } from './routes/_authedLayout/about/index'
 
 const HeaderLayoutRouteRoute = HeaderLayoutRouteRouteImport.update({
@@ -45,6 +46,11 @@ const HeaderLayoutSignInIndexRoute = HeaderLayoutSignInIndexRouteImport.update({
   path: '/signIn/',
   getParentRoute: () => HeaderLayoutRouteRoute,
 } as any)
+const HeaderLayoutFindIdIndexRoute = HeaderLayoutFindIdIndexRouteImport.update({
+  id: '/findId/',
+  path: '/findId/',
+  getParentRoute: () => HeaderLayoutRouteRoute,
+} as any)
 const AuthedLayoutAboutIndexRoute = AuthedLayoutAboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
@@ -55,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/findId': typeof HeaderLayoutFindIdIndexRoute
   '/signIn': typeof HeaderLayoutSignInIndexRoute
   '/signUp': typeof HeaderLayoutSignUpIndexRoute
 }
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
   '/about': typeof AuthedLayoutAboutIndexRoute
+  '/findId': typeof HeaderLayoutFindIdIndexRoute
   '/signIn': typeof HeaderLayoutSignInIndexRoute
   '/signUp': typeof HeaderLayoutSignUpIndexRoute
 }
@@ -72,14 +80,15 @@ export interface FileRoutesById {
   '/_headerLayout': typeof HeaderLayoutRouteRouteWithChildren
   '/login/': typeof LoginIndexRoute
   '/_authedLayout/about/': typeof AuthedLayoutAboutIndexRoute
+  '/_headerLayout/findId/': typeof HeaderLayoutFindIdIndexRoute
   '/_headerLayout/signIn/': typeof HeaderLayoutSignInIndexRoute
   '/_headerLayout/signUp/': typeof HeaderLayoutSignUpIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/about' | '/signIn' | '/signUp'
+  fullPaths: '/' | '/login' | '/about' | '/findId' | '/signIn' | '/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about' | '/signIn' | '/signUp'
+  to: '/' | '/login' | '/about' | '/findId' | '/signIn' | '/signUp'
   id:
     | '__root__'
     | '/'
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/_headerLayout'
     | '/login/'
     | '/_authedLayout/about/'
+    | '/_headerLayout/findId/'
     | '/_headerLayout/signIn/'
     | '/_headerLayout/signUp/'
   fileRoutesById: FileRoutesById
@@ -142,6 +152,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeaderLayoutSignInIndexRouteImport
       parentRoute: typeof HeaderLayoutRouteRoute
     }
+    '/_headerLayout/findId/': {
+      id: '/_headerLayout/findId/'
+      path: '/findId'
+      fullPath: '/findId'
+      preLoaderRoute: typeof HeaderLayoutFindIdIndexRouteImport
+      parentRoute: typeof HeaderLayoutRouteRoute
+    }
     '/_authedLayout/about/': {
       id: '/_authedLayout/about/'
       path: '/about'
@@ -164,11 +181,13 @@ const AuthedLayoutRouteRouteWithChildren =
   AuthedLayoutRouteRoute._addFileChildren(AuthedLayoutRouteRouteChildren)
 
 interface HeaderLayoutRouteRouteChildren {
+  HeaderLayoutFindIdIndexRoute: typeof HeaderLayoutFindIdIndexRoute
   HeaderLayoutSignInIndexRoute: typeof HeaderLayoutSignInIndexRoute
   HeaderLayoutSignUpIndexRoute: typeof HeaderLayoutSignUpIndexRoute
 }
 
 const HeaderLayoutRouteRouteChildren: HeaderLayoutRouteRouteChildren = {
+  HeaderLayoutFindIdIndexRoute: HeaderLayoutFindIdIndexRoute,
   HeaderLayoutSignInIndexRoute: HeaderLayoutSignInIndexRoute,
   HeaderLayoutSignUpIndexRoute: HeaderLayoutSignUpIndexRoute,
 }

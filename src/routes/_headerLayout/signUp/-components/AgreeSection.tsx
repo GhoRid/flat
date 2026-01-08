@@ -4,7 +4,7 @@ import {
   HiddenCheckbox,
   StyledCheckbox,
   CheckboxText,
-} from "../styles/ui";
+} from "../../styles/ui";
 import CheckIcon from "@svgs/check.svg?react";
 
 type Props = {

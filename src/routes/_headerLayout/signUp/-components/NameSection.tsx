@@ -1,4 +1,4 @@
-import { Input, Label, Section } from "../styles/ui";
+import { Input, Label, Section } from "../../styles/ui";
 
 type Props = {
   name: string;
