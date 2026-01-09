@@ -4,6 +4,7 @@ import { colors } from "../styles/colors";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 // import { clearTokens } from "../utils/token";
 import MenuIcon from "@svgs/menu.svg?react";
+import CloseIcon from "@svgs/Cancle.svg?react";
 import FlatLogo from "@svgs/FlatLogo.svg?react";
 import DashBoardIcon from "@svgs/Dashboard.svg?react";
 import FinancialManagementIcon from "@svgs/FinancialManagement.svg?react";
@@ -83,7 +84,10 @@ const MainLayout = ({ children }: Props) => {
       <HeaderContainer>
         <LeftSection>
           <MenuButton onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
-            <MenuIcon />
+            <AnimatedIconWrapper $isSideOpen={isSideBarOpen}>
+              <MenuIcon className="icon menu" />
+              <CloseIcon className="icon close" />
+            </AnimatedIconWrapper>
           </MenuButton>
           <FlatLogo width={64} height={15} />
         </LeftSection>
@@ -181,6 +185,36 @@ const MenuButton = styled.button`
     width: 22px;
     height: 22px;
     display: block;
+  }
+`;
+
+const AnimatedIconWrapper = styled.div<{ $isSideOpen: boolean }>`
+  position: relative;
+  width: 22px;
+  height: 22px;
+
+  .icon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: center;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .menu {
+    opacity: ${({ $isSideOpen }) => ($isSideOpen ? 0 : 1)};
+    transform: ${({ $isSideOpen }) =>
+      $isSideOpen ? "scale(0.8) rotate(90deg)" : "scale(1) rotate(0deg)"};
+  }
+
+  .close {
+    opacity: ${({ $isSideOpen }) => ($isSideOpen ? 1 : 0)};
+    transform: ${({ $isSideOpen }) =>
+      $isSideOpen ? "scale(1) rotate(0deg)" : "scale(0.8) rotate(-90deg)"};
   }
 `;
 
