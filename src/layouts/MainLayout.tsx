@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { colors } from "../styles/colors";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import { clearTokens } from "../utils/token";
+// import { clearTokens } from "../utils/token";
 import MenuIcon from "@svgs/menu.svg?react";
 import FlatLogo from "@svgs/FlatLogo.svg?react";
 import DashBoardIcon from "@svgs/Dashboard.svg?react";
@@ -13,6 +13,9 @@ import ClassManagementIcon from "@svgs/ClassManagement.svg?react";
 import ConsultationManagementIcon from "@svgs/ConsultationManagement.svg?react";
 import InstructorManagementIcon from "@svgs/InstructorManagement.svg?react";
 import HomeIcon from "@svgs/Home.svg?react";
+import NotificationDefaultIcon from "@svgs/NotificationDefault.svg?react";
+import NotificationActiveIcon from "@svgs/NotificationActive.svg?react";
+import UserIcon from "@svgs/User.svg?react";
 
 const menus = [
   {
@@ -85,14 +88,19 @@ const MainLayout = ({ children }: Props) => {
           <FlatLogo width={64} height={15} />
         </LeftSection>
 
-        <LogoutButton
-          onClick={() => {
-            clearTokens();
-            window.location.reload();
-          }}
-        >
-          <p>로그아웃</p>
-        </LogoutButton>
+        <RightSection>
+          <NotificationButton>
+            {false ? <NotificationActiveIcon /> : <NotificationDefaultIcon />}
+          </NotificationButton>
+
+          <TuitionPaymentButton>
+            <p>원비 결제</p>
+          </TuitionPaymentButton>
+
+          <ProfileButton>
+            <UserIcon />
+          </ProfileButton>
+        </RightSection>
       </HeaderContainer>
 
       <Main>
@@ -143,7 +151,7 @@ const Layout = styled.div`
 
 const HeaderContainer = styled.div`
   height: 55px;
-  border-bottom: 1px solid ${colors.border_gray};
+  border-bottom: 1px solid ${colors.gray};
   padding: 0 15px;
   display: flex;
   align-items: center;
@@ -198,14 +206,49 @@ const LeftSection = styled.div`
   }
 `;
 
-const LogoutButton = styled.button`
-  padding: 15px 30px;
-  cursor: pointer;
+const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+`;
+
+const NotificationButton = styled.button`
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TuitionPaymentButton = styled.button`
+  height: 36px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid ${colors.dark_gray};
+  border-radius: 18px;
+  opacity: 0.5;
 
   p {
-    color: ${colors.app_black};
+    color: ${colors.dark_gray};
     font-size: 14px;
-    font-weight: 500;
+  }
+`;
+
+const ProfileButton = styled.button`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: ${colors.gray};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: ${colors.dark_gray};
   }
 `;
 
@@ -218,7 +261,7 @@ const Main = styled.div`
 const SideBarContainer = styled.div<{ $isOpen: boolean }>`
   width: ${({ $isOpen }) => ($isOpen ? "300px" : "66px")};
   border-right: ${({ $isOpen }) =>
-    $isOpen ? `1px solid ${colors.border_gray}` : "none"};
+    $isOpen ? `1px solid ${colors.gray}` : "none"};
   height: calc(100vh - 55px);
   background-color: ${colors.white};
   transition: width 0.35s ease;
@@ -325,9 +368,9 @@ const Label = styled.span<{ $isOpen: boolean; $isActive: boolean }>`
 
 const OutletContainer = styled.div<{ $isOpen: boolean }>`
   flex: 1;
-  height: calc(100vh - 80px);
+  width: 100%;
+  height: calc(100vh - 55px);
   overflow-y: auto;
   box-sizing: border-box;
   overflow: scroll;
-  width: 100%;
 `;
